@@ -11,4 +11,4 @@ function RootPage() {
     );
   }
   
-  export default RootPage;
+export default RootPage;
