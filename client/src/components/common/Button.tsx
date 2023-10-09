@@ -40,7 +40,8 @@ function Button({ onClick, size = 'lg', children }: ButtonType) {
                 backgroundColor: "#233acf",
 
             }
-        })}>{children}</button>
+        })}
+        onClick={onClick} >{children}</button>
     );
 }
 

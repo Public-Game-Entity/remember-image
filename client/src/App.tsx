@@ -11,6 +11,7 @@ import RootPage from './pages/Root'
 import NotfoundPage from './pages/Notfound'
 
 import './App.css'
+import GamePage from './pages/Game';
 
 const App = () => {
     const isDarkmode = true
@@ -29,6 +30,7 @@ const App = () => {
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/" component={RootPage} />
+                    <Route path='/game' component={GamePage} />
 
 
 

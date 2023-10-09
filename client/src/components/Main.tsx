@@ -3,13 +3,19 @@
 import React, { useState, useEffect } from "react";
 import { Box, Grid } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import Button from "./common/Button";
 
 import { css } from '@emotion/react'
 
 
 function Main() {
+    let history = useHistory();
+
+    const handleClickStartGame = () => {
+        history.push('/game')
+        console.log("DS")
+    }
 
     return (
         <div css={css({ height: "100%"})}>
@@ -20,7 +26,7 @@ function Main() {
             
             <Footer>
                 <Box sx={{ justifyContent: 'center', textAlign: 'center' }}>
-                    <Button>게임 시작</Button>
+                    <Button onClick={handleClickStartGame}>게임 시작</Button>
                     
                 </Box>
             </Footer>
