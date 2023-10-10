@@ -11,8 +11,7 @@ import { css } from '@emotion/react'
 
 function Game() {
     const [urls, setUrls] = useState([])
-    const [nowActive, setNowActive] = useState(0)
-    const [answerIndex, setAnswerIndex] = useState(0)
+    const [nowActive, setNowActive] = useState(-1)
     const [count, setCount] = useState(20 + Math.floor(Math.random() * 20))
     const [showAnswer, setShowAnswer] = useState(false)
     const [isAnswer, setIsAnswer] = useState(false)
@@ -39,34 +38,51 @@ function Game() {
     }
 
     const handleClickImage = () => {
-        console.log("E")
         checkAnswer()
 
+        console.log(nowActive)
         setShowAnswer(true)
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
             setShowAnswer(false)
         }, 600)
     }
 
     const checkAnswer = () => {
         if (nowActive == count) {
-            console.log("C")
             setIsAnswer(true)
         } else {
-            console.log("N")
             setIsAnswer(false)
 
         }
         
     }
 
+    const timer = () => {
+        setNowActive(nowActive + 1)
+
+
+
+    }
+
     useEffect(() => {
-        if (nowActive != 0) {
-            urls[nowActive].isActive = true
-            urls[nowActive-1].isActive = false  
+
+        let tempUrls = urls.slice();
+
+        if (nowActive != -1) {
+            tempUrls[nowActive].isActive = true
+
         }
+        if (nowActive > 0) {
+            tempUrls[nowActive-1].isActive = false  
+        } 
+
+
+        setUrls(tempUrls)
+
+        setTimeout(timer, 3000)
 
     }, [nowActive])
+
 
     useEffect(() => {
         const randomArray: number[] = getImageArray()
@@ -82,34 +98,45 @@ function Game() {
 
         mapRandom.push(item)
 
-
-
-        mapRandom[0].isActive = true
         setUrls(mapRandom)
-        setInterval(() => {
-            setNowActive(active => active + 1)
-        }, 3000)
+        setTimeout(timer, 3000)
+
+
+
     }, [])
     
     return (
-        <div css={css({ height: "100%", width: "100%" })} onClick={handleClickImage}>
-            {/* {urls} */}
+        <>
+            <b>{nowActive}</b>
+
+
+            <div css={css({ height: "100%", width: "100%" })} onClick={handleClickImage}>
+
             {urls.map((element: any) => (
-                <Images isActive={element.isActive} url={element.url}></Images>
+                <>
+                    <Images isActive={element.isActive} url={element.url}></Images>
+
+ 
+                </>
             ))}
 
+
+
+            <div>
             <div css={css({ display: showAnswer ? "flex" : "none", justifyContent: "center", position: "absolute", top: "50%", transform: "translate(0, -50%)", width: "100%" })}>
             <span className="material-symbols-outlined" css={css({ display: isAnswer ? "" : "none", fontSize: "20rem", color: "#1bf761", animationName: "fadeIn", animationDuration: "0.6s" })}>
             done
             </span>
-            </div>
-
-            <div css={css({ display: showAnswer ? "flex" : "none", justifyContent: "center", position: "absolute", top: "50%", transform: "translate(0, -50%)", width: "100%" })}>
             <span className="material-symbols-outlined" css={css({ display: isAnswer ? "none" : "", fontSize: "20rem", color: "#f7261b", animationName: "fadeIn", animationDuration: "0.6s" })}>
             close
             </span>
             </div>
+
+            </div>
+
         </div>
+        </>
+
     );
 }
 
@@ -118,6 +145,9 @@ function Game() {
 
 function Images({ isActive, url }) {
 
+    useEffect(() => {
+        console.log("E")
+    }, [])
 
     return (
         <div css={css({ height: "100%", display: isActive ? "" : "none" })}>

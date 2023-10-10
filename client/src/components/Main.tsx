@@ -6,7 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from "react-router-dom"
 import Button from "./common/Button";
 
+import { NormalDistribution } from './Graph'
 import { css } from '@emotion/react'
+import Badge from "./common/Badge";
 
 
 function Main() {
@@ -20,9 +22,12 @@ function Main() {
     return (
         <div css={css({ height: "100%"})}>
             <Header>
-                <h1>이미지 기억력 테스트</h1>
-                <p></p>
+                <h1 css={css({ color: "#020617" })}>이미지 기억력 테스트 <Badge>Beta</Badge></h1>
+                <p css={css({ color: "#334155" })}>당신의 기억력은 어느정도인가. </p>
+                <NormalDistribution></NormalDistribution>
             </Header>
+
+
             
             <Footer>
                 <Box sx={{ justifyContent: 'center', textAlign: 'center' }}>
