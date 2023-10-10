@@ -6,9 +6,7 @@ import { Game } from "../components/Game";
 function GamePage() {
 
     return (
-        <div>
-            <Game></Game>
-        </div>
+<Game></Game>
     );
   }
   

@@ -8,35 +8,18 @@ a {
     text-decoration: none;
 }
 
-.font-title {
-    font-family: 'Noto Sans KR', sans-serif;
-    word-break: keep-all;
-}
 
-.font-weight-lg {
-    font-family: 'Noto Sans KR', sans-serif;
-    word-break: keep-all;
-    font-weight: 700 !important;
-}
-.font-weight-md {
-    font-family: 'Noto Sans KR', sans-serif;
-    word-break: keep-all;
-    font-weight: 500 !important;
-}
 
-.card-title{
-    font-family: 'Noto Sans KR', sans-serif;
 
-}
+@-webkit-keyframes fadeIn {
+    0% {
+        font-size:16rem;
+        opacity: 0%;
+    }
+    100% {
+        font-size: 20rem;
 
-.form-textarea{
-    border: none !important;
-}
-
-body.swal2-height-auto {
-    height: initial !important;
-}
-
-.swal2-container.swal2-center>.swal2-popup {
-    border-radius: 10px;
-}
+        opacity: 100%;
+    }
+  }
+  
