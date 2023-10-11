@@ -12,25 +12,16 @@ import NotfoundPage from './pages/Notfound'
 
 import './App.css'
 import GamePage from './pages/Game';
+import GameOverPage from './pages/GameOver';
 
 const App = () => {
-    const isDarkmode = true
-
-    const darkTheme = createTheme({
-        palette: {
-            mode: isDarkmode === true ? 'dark' : 'light',
-            primary: {
-                main: '#0d6efd',
-            },
-        },
-    });
-
     return (
         <div>
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/" component={RootPage} />
                     <Route path='/game' component={GamePage} />
+                    <Route path='/over' component={GameOverPage} />
 
 
 

@@ -12,11 +12,10 @@ import Badge from "./common/Badge";
 
 
 function Main() {
-    let history = useHistory();
+    const history = useHistory();
 
     const handleClickStartGame = () => {
         history.push('/game')
-        console.log("DS")
     }
 
     return (
@@ -24,15 +23,11 @@ function Main() {
             <Header>
                 <h1 css={css({ color: "#020617" })}>이미지 기억력 테스트 <Badge>Beta</Badge></h1>
                 <p css={css({ color: "#334155" })}>당신의 기억력은 어느정도인가. </p>
-                <NormalDistribution></NormalDistribution>
             </Header>
-
-
             
             <Footer>
                 <Box sx={{ justifyContent: 'center', textAlign: 'center' }}>
                     <Button onClick={handleClickStartGame}>게임 시작</Button>
-                    
                 </Box>
             </Footer>
         </div>
@@ -70,3 +65,4 @@ function Footer({ children }) {
 
 
 export default Main;
+export { Header, Footer }

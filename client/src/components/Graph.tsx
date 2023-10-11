@@ -1,15 +1,8 @@
 /** @jsxImportSource @emotion/react */
 
 import React, { useState, useEffect, useRef } from "react";
-import { Box, Grid } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from "react-router-dom"
-import Button from "./common/Button";
 
-import { css } from '@emotion/react'
-
-
-function NormalDistribution() {
+function NormalDistribution({ score }) {
     const canvasRef: any = useRef()
 
     const drawGraph = () => {
